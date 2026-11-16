@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wafra | Login</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* =================================
+           1. GENERAL SETTINGS
+        ================================= */
+
+        :root {
+            --green: #1f3a2a;
+            --green-2: #2b4a37;
+            --cream: #f5f2ea;
+            --ink: #1f3a2a;
+            --muted: #5b6a60;
+            --line: #dedbd0;
+            --link: #3f6b3f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        :focus-visible {
+            outline: 2px solid #8fbf7f;
+            outline-offset: 2px;
+        }
+
+
+        /* =================================
+           2. LOGO
+        ================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 34px;
+            width: auto;
+            display: block;
+        }
+
+
+        /* =================================
+           3. MAIN LAYOUT
+        ================================= */
+
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 590px;
+        }
+
+
+        /* =================================
+           4. LEFT HERO SECTION
+        ================================= */
+
+        .hero {
+            position: relative;
+
+            background-image:
+                url("images/donate 2.png"),
+                linear-gradient(
+                    160deg,
+                    #c9b9a6 0%,
+                    #8c8f7a 45%,
+                    #3d5a45 100%
+                );
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            padding: 24px 46px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                to bottom,
+                transparent 35%,
+                rgba(31, 58, 42, .95) 90%
+            );
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-family: Lora, serif;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 300px;
+            color: #e6ebe6;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+
+        /* =================================
+           5. RIGHT LOGIN PANEL
+        ================================= */
+
+        .panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 276px;
+        }
+
+        .form h1 {
+            font-family: Lora, serif;
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .form .sub {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 34px;
+        }
+
+
+        /* =================================
+           6. INPUT LABELS
+        ================================= */
+
+        .form label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 7px;
+        }
+
+
+        /* =================================
+           7. INPUT FIELDS
+        ================================= */
+
+        .field {
+            height: 35px;
+            padding: 0 14px;
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #faf9f4;
+        }
+
+        .field svg {
+            width: 14px;
+            height: 14px;
+            flex: none;
+
+            stroke: var(--ink);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .field input {
+            flex: 1;
+            min-width: 0;
+
+            border: 0;
+            outline: none;
+            background: none;
+
+            font: inherit;
+            font-size: 10.5px;
+            color: var(--ink);
+        }
+
+        .field input::placeholder {
+            color: #8a948c;
+        }
+
+        .field:focus-within {
+            border-color: var(--green);
+        }
+
+
+        /* =================================
+           8. PASSWORD SHOW / HIDE
+        ================================= */
+
+        .eye {
+            display: flex;
+            padding: 0;
+            border: 0;
+            background: none;
+        }
+
+
+        /* =================================
+           9. REMEMBER ME AND FORGOT PASSWORD
+        ================================= */
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 10.5px;
+            margin: -4px 0 26px;
+        }
+
+        .row label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin: 0;
+            font-size: 10.5px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .row input {
+            width: 14px;
+            height: 14px;
+            accent-color: var(--green);
+        }
+
+        .row a {
+            text-decoration: underline;
+        }
+
+
+        /* =================================
+           10. LOGIN BUTTON
+        ================================= */
+
+        .btn {
+            width: 100%;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+            border: 0;
+
+            box-shadow: 0 6px 14px rgba(31, 58, 42, .25);
+        }
+
+        .btn-primary:hover {
+            background: var(--green-2);
+        }
+
+
+        /* =================================
+           11. GOOGLE LOGIN BUTTON
+        ================================= */
+
+        .btn-outline {
+            background: #faf9f4;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-outline:hover {
+            background: #efece2;
+        }
+
+        .g {
+            width: 15px;
+            height: 15px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--ink);
+            border-radius: 50%;
+
+            font-size: 8px;
+        }
+
+
+        /* =================================
+           12. DIVIDER AND CREATE ACCOUNT
+        ================================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--muted);
+            font-size: 10px;
+
+            margin: 22px 0 16px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .create {
+            text-align: center;
+            font-size: 11px;
+            margin-top: 20px;
+        }
+
+        .create a {
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+
+        /* =================================
+           13. FOOTER
+        ================================= */
+
+        footer {
+            display: grid;
+            grid-template-columns: 1.3fr repeat(4, auto);
+            align-items: center;
+            gap: 44px;
+
+            background: var(--green);
+            color: white;
+            padding: 60px 46px 50px;
+        }
+
+        footer .logo img {
+            height: 48px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: start;
+            gap: 8px;
+
+            font-size: 10.5px;
+        }
+
+        .col h4 {
+            font-size: 12.5px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .col a:hover {
+            text-decoration: underline;
+        }
+
+        .fb {
+            width: 15px;
+            height: 15px;
+            fill: white;
+        }
+
+
+        /* =================================
+           14. RESPONSIVE DESIGN
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            .main {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 420px;
+            }
+
+            .panel {
+                padding: 40px 24px;
+            }
+
+            footer {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            footer .logo {
+                grid-column: 1 / -1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         1. MAIN CONTENT
+    ================================= -->
+
+    <section class="main">
+
+
+        <!-- LEFT SIDE: HERO -->
+
+        <div class="hero">
+
+            <a class="logo" data-link="home">
+
+                <img
+                    src="images/Wafra-logo-transparent.png"
+                    alt="Wafra Logo"
+                >
+
+            </a>
+
+
+            <div>
+
+                <h2>
+                    Good food deserves<br>
+                    a second life.
+                </h2>
+
+                <p>
+                    Bringing individuals, food businesses, and
+                    charitable organizations together to reduce
+                    food waste and support communities.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE: LOGIN FORM -->
+
+        <div class="panel">
+
+            <form class="form" id="loginForm" novalidate>
+
+
+                <h1>Welcome Back!</h1>
+
+                <p class="sub">
+                    Log in to your Wafra account and continue
+                    making a difference.
+                </p>
+
+
+                <!-- EMAIL ADDRESS -->
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <div class="field">
+
+                    <svg viewBox="0 0 16 16">
+                        <rect x="1.5" y="3" width="13" height="10" rx="1.5"/>
+                        <path d="M2 4l6 5 6-5"/>
+                    </svg>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="field">
+
+                    <svg viewBox="0 0 16 16">
+                        <rect x="3" y="7" width="10" height="7" rx="1.5"/>
+                        <path d="M5 7V5a3 3 0 0 1 6 0v2"/>
+                    </svg>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="eye"
+                        data-target="password"
+                        aria-label="Show password"
+                    >
+
+                        <svg viewBox="0 0 16 16">
+                            <path d="M1 8s2.5-4.5 7-4.5S15 8 15 8s-2.5 4.5-7 4.5S1 8 1 8z"/>
+                            <circle cx="8" cy="8" r="2"/>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <!-- REMEMBER ME / FORGOT PASSWORD -->
+
+                <div class="row">
+
+                    <label>
+                        <input type="checkbox" id="remember">
+                        Remember Me
+                    </label>
+
+                    <a data-link="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button type="submit" class="btn btn-primary">
+                    Login <span>→</span>
+                </button>
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider">
+                    Or continue with
+                </div>
+
+
+                <!-- GOOGLE BUTTON -->
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="googleBtn"
+                >
+
+                    <span class="g">G</span>
+                    Continue with Google
+
+                </button>
+
+
+                <!-- CREATE ACCOUNT LINK -->
+
+                <p class="create">
+
+                    Don't have an account?
+
+                    <a data-link="signup">
+                        Create Account
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         2. FOOTER
+    ================================= -->
+
+    <footer>
+
+
+        <!-- LOGO -->
+
+        <a class="logo" data-link="home">
+
+            <img
+                src="images/Wafra-logo-transparent.png"
+                alt="Wafra Logo"
+            >
+
+        </a>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="col">
+
+            <h4>Quick Links</h4>
+
+            <a data-link="about">About Wafra</a>
+            <a data-link="how">How it works</a>
+            <a data-link="meals">Explore Meals</a>
+            <a data-link="donate">Donate</a>
+
+        </div>
+
+
+        <!-- BUSINESS LINKS -->
+
+        <div class="col">
+
+            <h4>For Businesses</h4>
+
+            <a data-link="joinBusiness">Join Wafra</a>
+            <a data-link="businessSupport">Business Support</a>
+            <a data-link="faqs">FAQs</a>
+            <a data-link="contact">Contact Us</a>
+
+        </div>
+
+
+        <!-- LEGAL LINKS -->
+
+        <div class="col">
+
+            <h4>Legal</h4>
+
+            <a data-link="privacy">Privacy Policy</a>
+            <a data-link="terms">Terms and Conditions</a>
+
+        </div>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <div class="col">
+
+            <h4>Follow Us</h4>
+
+            <a data-link="facebook" aria-label="Facebook">
+
+                <svg class="fb" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2z"/>
+                </svg>
+
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================
+         3. JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+
+        /* ---------------------------------
+           PAGE LINKS
+        --------------------------------- */
+
+        const LINKS = {
+
+            home: "home.html",
+
+            login: "login.html",
+            signup: "signup.html",
+
+            afterLogin: "dashboard.html",
+
+            forgot: "forgot-password.html",
+
+            about: "about.html",
+            how: "how-it-works.html",
+
+            meals: "find-food.html",
+            donate: "donation.html",
+
+            joinBusiness: "join.html",
+            businessSupport: "business-support.html",
+
+            faqs: "faqs.html",
+            contact: "contact.html",
+
+            privacy: "privacy.html",
+            terms: "terms.html",
+
+            facebook: "https://facebook.com/"
+
+        };
+
+
+        /* ---------------------------------
+           ACTIVATE PAGE LINKS
+        --------------------------------- */
+
+        document.querySelectorAll("[data-link]").forEach(link => {
+
+            const url = LINKS[link.dataset.link];
+
+            if (!url) return;
+
+            link.href = url;
+
+            if (url.startsWith("http")) {
+
+                link.target = "_blank";
+                link.rel = "noopener";
+
+            }
+
+        });
+
+
+        /* ---------------------------------
+           SHOW / HIDE PASSWORD
+        --------------------------------- */
+
+        document.querySelectorAll(".eye").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const password = document.getElementById(
+                    button.dataset.target
+                );
+
+                password.type =
+                    password.type === "password"
+                    ? "text"
+                    : "password";
+
+            });
+
+        });
+
+
+        /* ---------------------------------
+           GOOGLE LOGIN BUTTON
+        --------------------------------- */
+
+        document.getElementById("googleBtn").addEventListener("click", () => {
+
+            window.open(
+                "https://accounts.google.com/",
+                "_blank",
+                "noopener"
+            );
+
+        });
+
+
+        /* ---------------------------------
+           LOGIN FORM VALIDATION
+        --------------------------------- */
+
+        const loginForm = document.getElementById("loginForm");
+
+        const emailInput = document.getElementById("email");
+
+        const passwordInput = document.getElementById("password");
+
+
+        loginForm.addEventListener("submit", event => {
+
+            event.preventDefault();
+
+
+            // Check email and password
+
+            if (!emailInput.value.trim() || !passwordInput.value) {
+
+                alert("Please enter your email and password.");
+
+                return;
+
+            }
+
+
+            // Check email format
+
+            if (!emailInput.checkValidity()) {
+
+                emailInput.reportValidity();
+
+                return;
+
+            }
+
+
+            // Continue after login validation
+
+            window.location.href = LINKS.afterLogin;
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

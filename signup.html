@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wafra | Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =================================
+           1. GENERAL SETTINGS
+        ================================= */
+
+        :root {
+            --green: #1f3a2a;
+            --green-2: #2b4a37;
+            --cream: #f5f2ea;
+            --ink: #1f3a2a;
+            --muted: #5b6a60;
+            --line: #dedbd0;
+            --link: #3f6b3f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        :focus-visible {
+            outline: 2px solid #8fbf7f;
+            outline-offset: 2px;
+        }
+
+
+        /* =================================
+           2. LOGO
+        ================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 34px;
+            width: auto;
+            display: block;
+        }
+
+
+        /* =================================
+           3. MAIN LAYOUT
+        ================================= */
+
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
+
+
+        /* =================================
+           4. LEFT HERO SECTION
+        ================================= */
+
+        .hero {
+            height: 590px;
+            position: sticky;
+            top: 0;
+
+            background-image:
+                url("images/pexels-cottonbro-5898114.jpg"),
+                linear-gradient(
+                    160deg,
+                    #c9b9a6 0%,
+                    #8c8f7a 45%,
+                    #3d5a45 100%
+                );
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            padding: 24px 46px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                to bottom,
+                transparent 35%,
+                rgba(31, 58, 42, .95) 90%
+            );
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-family: Lora, serif;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 300px;
+            color: #e6ebe6;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+
+        /* =================================
+           5. RIGHT FORM PANEL
+        ================================= */
+
+        .panel {
+            padding: 44px 42px 56px;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 331px;
+        }
+
+        .form h1 {
+            font-family: Lora, serif;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .form .sub {
+            color: var(--muted);
+            font-size: 11.5px;
+            line-height: 1.5;
+            margin-bottom: 26px;
+        }
+
+
+        /* =================================
+           6. FORM SECTIONS
+        ================================= */
+
+        .sec {
+            border-top: 1px solid var(--line);
+            padding-top: 22px;
+            margin-bottom: 22px;
+        }
+
+        .sec h3 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .sec .hint {
+            color: var(--muted);
+            font-size: 10px;
+            margin: -10px 0 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 12px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        .g1 {
+            margin-bottom: 14px;
+        }
+
+
+        /* =================================
+           7. LABELS AND INPUTS
+        ================================= */
+
+        label,
+        .lbl {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 500;
+            margin-bottom: 7px;
+        }
+
+        .req {
+            margin-left: 2px;
+        }
+
+        .opt {
+            display: inline-block;
+            color: var(--muted);
+            font-size: 8px;
+            font-weight: 400;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 1px 7px;
+            margin-left: 6px;
+        }
+
+        .field {
+            height: 35px;
+            padding: 0 14px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #faf9f4;
+        }
+
+        .field svg {
+            width: 14px;
+            height: 14px;
+            flex: none;
+
+            stroke: var(--ink);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            flex: 1;
+            min-width: 0;
+
+            border: 0;
+            background: none;
+
+            font: inherit;
+            font-size: 10.5px;
+            color: var(--ink);
+            outline: none;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #8a948c;
+        }
+
+        .field:focus-within {
+            border-color: var(--green);
+        }
+
+        .field select {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .field select:invalid {
+            color: #8a948c;
+        }
+
+        .field.ta {
+            height: 60px;
+            align-items: flex-start;
+            padding-top: 9px;
+        }
+
+        .field.ta textarea {
+            height: 100%;
+            resize: none;
+        }
+
+
+        /* =================================
+           8. PASSWORD VISIBILITY
+        ================================= */
+
+        .eye {
+            display: flex;
+            padding: 0;
+            border: 0;
+            background: none;
+        }
+
+
+        /* =================================
+           9. ADDRESS NOTE
+        ================================= */
+
+        .note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--muted);
+            font-size: 9.5px;
+            margin-top: 14px;
+        }
+
+        .note svg {
+            width: 11px;
+            height: 11px;
+            stroke: var(--muted);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+
+        /* =================================
+           10. TERMS AND CONDITIONS
+        ================================= */
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 10.5px;
+            font-weight: 400;
+            margin-bottom: 18px;
+        }
+
+        .terms input {
+            width: 14px;
+            height: 14px;
+            accent-color: var(--green);
+        }
+
+        .terms a {
+            color: var(--link);
+            text-decoration: underline;
+        }
+
+
+        /* =================================
+           11. BUTTONS
+        ================================= */
+
+        .btn {
+            width: 100%;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .btn-primary {
+            color: white;
+            background: var(--green);
+            border: 0;
+            box-shadow: 0 6px 14px rgba(31, 58, 42, .25);
+        }
+
+        .btn-primary:hover {
+            background: var(--green-2);
+        }
+
+        .login-link {
+            text-align: center;
+            font-size: 11px;
+            margin-top: 18px;
+        }
+
+        .login-link a {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .err {
+            display: none;
+            color: #b3261e;
+            font-size: 10px;
+            margin: -8px 0 12px;
+        }
+
+
+        /* =================================
+           12. FOOTER
+        ================================= */
+
+        footer {
+            display: grid;
+            grid-template-columns: 1.3fr repeat(4, auto);
+            align-items: center;
+            gap: 44px;
+
+            color: white;
+            background: var(--green);
+            padding: 60px 46px 50px;
+        }
+
+        footer .logo img {
+            height: 48px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: start;
+            gap: 8px;
+            font-size: 10.5px;
+        }
+
+        .col h4 {
+            font-size: 12.5px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .col a:hover {
+            text-decoration: underline;
+        }
+
+        .fb {
+            width: 15px;
+            height: 15px;
+            fill: white;
+        }
+
+
+        /* =================================
+           13. RESPONSIVE DESIGN
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            .main {
+                grid-template-columns: 1fr;
+            }
+
+            .main .hero {
+                position: relative;
+                height: 420px;
+            }
+
+            .panel {
+                padding: 32px 24px;
+            }
+
+            footer {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            footer .logo {
+                grid-column: 1 / -1;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =================================
+         1. MAIN CONTENT
+    ================================= -->
+
+    <section class="main">
+
+
+        <!-- LEFT SIDE: HERO -->
+
+        <div class="hero">
+
+            <a class="logo" aref="home.html">
+                <img
+                    src="images/Header-Logo.png"
+                    alt="Wafra Logo"
+                >
+            </a>
+
+            <div>
+                <h2>
+                    Good food deserves<br>
+                    a second life.
+                </h2>
+
+                <p>
+                    Bringing individuals, food businesses, and
+                    charitable organizations together to reduce
+                    food waste and support communities.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE: SIGNUP FORM -->
+
+        <div class="panel">
+
+            <form class="form" id="signupForm" novalidate>
+
+                <h1>Create Your Account</h1>
+
+                <p class="sub">
+                    Join Wafra to order good food and help it
+                    reach people who need it.
+                </p>
+
+
+                <!-- PERSONAL INFORMATION -->
+
+                <div class="sec">
+
+                    <h3>Personal Information</h3>
+
+                    <div class="g1">
+
+                        <label for="name">
+                            Full Name <span class="req">*</span>
+                        </label>
+
+                        <div class="field">
+
+                            <svg viewBox="0 0 16 16">
+                                <circle cx="8" cy="5.5" r="2.7"/>
+                                <path d="M2.5 14c.5-3 2.7-4.5 5.5-4.5S13 11 13.5 14"/>
+                            </svg>
+
+                            <input
+                                id="name"
+                                type="text"
+                                placeholder="Enter your full name"
+                                required
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="grid">
+
+                        <div class="g1">
+
+                            <label for="email">
+                                Email Address <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <rect x="1.5" y="3" width="13" height="10" rx="1.5"/>
+                                    <path d="M2 4l6 5 6-5"/>
+                                </svg>
+
+                                <input
+                                    id="email"
+                                    type="email"
+                                    placeholder="Enter your email address"
+                                    required
+                                    autocomplete="email"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="g1">
+
+                            <label for="phone">
+                                Phone Number <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <path d="M3 2.5h3l1 3-1.8 1.2a8 8 0 0 0 3.6 3.6L10 8.5l3 1v3a1.5 1.5 0 0 1-1.5 1.5A10.5 10.5 0 0 1 1.5 4 1.5 1.5 0 0 1 3 2.5z"/>
+                                </svg>
+
+                                <input
+                                    id="phone"
+                                    type="tel"
+                                    placeholder="Enter your phone number"
+                                    required
+                                    autocomplete="tel"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCOUNT CREDENTIALS -->
+
+                <div class="sec">
+
+                    <h3>Account Credentials</h3>
+
+                    <div class="grid">
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="g1">
+
+                            <label for="pass1">
+                                Password <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <rect x="3" y="7" width="10" height="7" rx="1.5"/>
+                                    <path d="M5 7V5a3 3 0 0 1 6 0v2"/>
+                                </svg>
+
+                                <input
+                                    id="pass1"
+                                    type="password"
+                                    placeholder="Create a password"
+                                    required
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                >
+
+                                <button
+                                    type="button"
+                                    class="eye"
+                                    data-target="pass1"
+                                    aria-label="Show password"
+                                >
+                                    <svg viewBox="0 0 16 16">
+                                        <path d="M1 8s2.5-4.5 7-4.5S15 8 15 8s-2.5 4.5-7 4.5S1 8 1 8z"/>
+                                        <circle cx="8" cy="8" r="2"/>
+                                    </svg>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="g1">
+
+                            <label for="pass2">
+                                Confirm Password <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <rect x="3" y="7" width="10" height="7" rx="1.5"/>
+                                    <path d="M5 7V5a3 3 0 0 1 6 0v2"/>
+                                </svg>
+
+                                <input
+                                    id="pass2"
+                                    type="password"
+                                    placeholder="Re-enter your password"
+                                    required
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                >
+
+                                <button
+                                    type="button"
+                                    class="eye"
+                                    data-target="pass2"
+                                    aria-label="Show password"
+                                >
+                                    <svg viewBox="0 0 16 16">
+                                        <path d="M1 8s2.5-4.5 7-4.5S15 8 15 8s-2.5 4.5-7 4.5S1 8 1 8z"/>
+                                        <circle cx="8" cy="8" r="2"/>
+                                    </svg>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="err" id="passErr">
+                        Passwords do not match.
+                    </p>
+
+                </div>
+
+
+                <!-- DELIVERY ADDRESS -->
+
+                <div class="sec">
+
+                    <h3>Delivery Address</h3>
+
+                    <p class="hint">
+                        Add your address to make future orders easier.
+                    </p>
+
+
+                    <!-- COUNTRY AND CITY -->
+
+                    <div class="g1">
+
+                        <label for="city">
+                            Country / City <span class="req">*</span>
+                        </label>
+
+                        <div class="field">
+
+                            <svg viewBox="0 0 16 16">
+                                <path d="M8 14.5s4.5-4 4.5-7.5a4.5 4.5 0 0 0-9 0C3.5 10.5 8 14.5 8 14.5z"/>
+                                <circle cx="8" cy="7" r="1.6"/>
+                            </svg>
+
+                            <select id="city" required>
+
+                                <option value="" disabled selected>
+                                    Select your country and city
+                                </option>
+
+                                <option>Egypt – Cairo</option>
+                                <option>Egypt – Giza</option>
+                                <option>Egypt – Alexandria</option>
+                                <option>Egypt – Ismailia</option>
+                                <option>Egypt – Port Said</option>
+                                <option>Egypt – Suez</option>
+
+                            </select>
+
+                            <svg viewBox="0 0 16 16">
+                                <path d="M3.5 6L8 10.5 12.5 6"/>
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AREA AND STREET -->
+
+                    <div class="grid">
+
+                        <div class="g1">
+
+                            <label for="area">
+                                Area / District <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <path d="M1.5 3.5l4-1.5 5 1.5 4-1.5v10l-4 1.5-5-1.5-4 1.5zM5.5 2v10.5M10.5 3.5V14"/>
+                                </svg>
+
+                                <input
+                                    id="area"
+                                    type="text"
+                                    placeholder="Enter your area or district"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="g1">
+
+                            <label for="street">
+                                Street Address <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <path d="M2 7.5L8 2.5l6 5M3.5 7v6.5h9V7M6.5 13.5v-4h3v4"/>
+                                </svg>
+
+                                <input
+                                    id="street"
+                                    type="text"
+                                    placeholder="Street name and details"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BUILDING NUMBER -->
+
+                        <div class="g1">
+
+                            <label for="building">
+                                Building Number <span class="req">*</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <rect x="3.5" y="1.5" width="9" height="13" rx="1.5"/>
+                                    <path d="M6 5h1M9 5h1M6 8h1M9 8h1M7 14.5v-3h2v3"/>
+                                </svg>
+
+                                <input
+                                    id="building"
+                                    type="text"
+                                    placeholder="Building number"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- APARTMENT -->
+
+                        <div class="g1">
+
+                            <label for="apt">
+                                Apartment / Floor
+                                <span class="opt">Optional</span>
+                            </label>
+
+                            <div class="field">
+
+                                <svg viewBox="0 0 16 16">
+                                    <rect x="4" y="1.5" width="8" height="13" rx="1.5"/>
+                                    <circle cx="9.5" cy="8" r=".6"/>
+                                </svg>
+
+                                <input
+                                    id="apt"
+                                    type="text"
+                                    placeholder="Apartment or floor"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADDITIONAL DIRECTIONS -->
+
+                    <div class="g1">
+
+                        <label for="dir">
+                            Additional Directions
+                            <span class="opt">Optional</span>
+                        </label>
+
+                        <div class="field ta">
+
+                            <svg viewBox="0 0 16 16">
+                                <path d="M2 3h12v8H7l-3 2.5V11H2z"/>
+                            </svg>
+
+                            <textarea
+                                id="dir"
+                                placeholder="Landmark or delivery instructions"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="note">
+
+                        <svg viewBox="0 0 16 16">
+                            <path d="M2 3h12v8H7l-3 2.5V11H2z"/>
+                        </svg>
+
+                        You can update your delivery address anytime from your profile.
+
+                    </p>
+
+                </div>
+
+
+                <!-- TERMS AND CONDITIONS -->
+
+                <div class="sec">
+
+                    <h3>Terms &amp; Conditions</h3>
+
+                    <label class="terms">
+
+                        <input type="checkbox" id="agree">
+
+                        <span>
+                            I agree to the
+                            <a data-link="terms">Terms &amp; Conditions</a>
+                            and
+                            <a data-link="privacy">Privacy Policy</a>.
+                        </span>
+
+                    </label>
+
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Account <span>→</span>
+                    </button>
+
+
+                    <p class="login-link">
+                        Already have an account?
+                        <a data-link="login">Log In</a>
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         2. FOOTER
+    ================================= -->
+
+    <footer>
+
+        <!-- LOGO -->
+
+        <a class="logo" data-link="home">
+
+            <img
+                src="images/Wafra-logo-transparent.png"
+                alt="Wafra Logo"
+            >
+
+        </a>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="col">
+
+            <h4>Quick Links</h4>
+
+            <a data-link="about">About Wafra</a>
+            <a data-link="how">How it works</a>
+            <a data-link="meals">Explore Meals</a>
+            <a data-link="donate">Donate</a>
+
+        </div>
+
+
+        <!-- BUSINESS LINKS -->
+
+        <div class="col">
+
+            <h4>For Businesses</h4>
+
+            <a data-link="joinBusiness">Join Wafra</a>
+            <a data-link="businessSupport">Business Support</a>
+            <a data-link="faqs">FAQs</a>
+            <a data-link="contact">Contact Us</a>
+
+        </div>
+
+
+        <!-- LEGAL LINKS -->
+
+        <div class="col">
+
+            <h4>Legal</h4>
+
+            <a data-link="privacy">Privacy Policy</a>
+            <a data-link="terms">Terms and Conditions</a>
+
+        </div>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <div class="col">
+
+            <h4>Follow Us</h4>
+
+            <a data-link="facebook" aria-label="Facebook">
+
+                <svg class="fb" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2z"/>
+                </svg>
+
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================
+         3. JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        /* ---------------------------------
+           PAGE LINKS
+        --------------------------------- */
+
+        const LINKS = {
+
+            home: "home.html",
+            login: "login.html",
+            signup: "signup.html",
+
+            afterLogin: "dashboard.html",
+            afterSignup: "login.html",
+
+            forgot: "forgot-password.html",
+            google: "https://accounts.google.com/",
+
+            about: "about.html",
+            how: "how-it-works.html",
+
+            meals: "find-food.html",
+            donate: "donation.html",
+
+            joinBusiness: "join.html",
+            businessSupport: "business-support.html",
+
+            faqs: "faqs.html",
+            contact: "contact.html",
+
+            privacy: "privacy.html",
+            terms: "terms.html",
+
+            facebook: "https://facebook.com/"
+
+        };
+
+
+        /* ---------------------------------
+           ACTIVATE PAGE LINKS
+        --------------------------------- */
+
+        document.querySelectorAll("[data-link]").forEach(link => {
+
+            const url = LINKS[link.dataset.link];
+
+            if (!url) return;
+
+            const isExternal = url.startsWith("http");
+
+            if (link.tagName === "A") {
+
+                link.href = url;
+
+                if (isExternal) {
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                }
+
+            }
+
+        });
+
+
+        /* ---------------------------------
+           SHOW / HIDE PASSWORD
+        --------------------------------- */
+
+        document.querySelectorAll(".eye").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const password = document.getElementById(
+                    button.dataset.target
+                );
+
+                password.type =
+                    password.type === "password"
+                    ? "text"
+                    : "password";
+
+            });
+
+        });
+
+
+        /* ---------------------------------
+           SIGNUP FORM VALIDATION
+        --------------------------------- */
+
+        const signupForm = document.getElementById("signupForm");
+
+        const password1 = document.getElementById("pass1");
+        const password2 = document.getElementById("pass2");
+
+        const passwordError = document.getElementById("passErr");
+
+        const agreeCheckbox = document.getElementById("agree");
+
+
+        signupForm.addEventListener("submit", event => {
+
+            event.preventDefault();
+
+            passwordError.style.display = "none";
+
+
+            // Check required fields
+
+            if (!signupForm.checkValidity()) {
+
+                signupForm.reportValidity();
+
+                return;
+
+            }
+
+
+            // Check matching passwords
+
+            if (password1.value !== password2.value) {
+
+                passwordError.style.display = "block";
+
+                password2.focus();
+
+                return;
+
+            }
+
+
+            // Check terms agreement
+
+            if (!agreeCheckbox.checked) {
+
+                alert(
+                    "Please agree to the Terms & Conditions and Privacy Policy."
+                );
+
+                return;
+
+            }
+
+
+            // Continue after successful validation
+
+            window.location.href = LINKS.afterSignup;
+
+        });
+
+    </script>
+
+</body>
+</html>
